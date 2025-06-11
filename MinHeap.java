@@ -191,6 +191,25 @@ public class MinHeap {
      * THIS IS YOUR ASSIGNMENT
      */
     private void heapifyUp() {
+
+        // Start with the last added element (current usage - 1)
+        int current = this.usage - 1;
+        
+        // While we're not at the root and the current element is smaller than its parent
+        while (current > 0) {
+            int parentIndex = parent(current);
+            
+            // If current element is greater or equal to parent, heap property is satisfied
+            if (this.underlying[current] >= this.underlying[parentIndex]) {
+                break;
+            }
+            
+            // Otherwise, swap with parent
+            swap(parentIndex, current);
+            
+            // Move up to parent's position
+            current = parentIndex;
+        }
     } // method heapifyUp
 
     /**
